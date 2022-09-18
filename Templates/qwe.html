@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Login </title>
+        <link rel="stylesheet" href="../static/style.css">      
+    </head>
+    <body>
+      <center>   
+      <table border="1">
+        <caption>Результат</caption>
+        <tr>
+          {% for key in keys%}
+         <th>{{key}}</th>
+         {% endfor %}
+        </tr>
+        {% for user in msg%}
+        <tr>
+          {% for key in keys%}
+         
+         <td>{{user[key]}}</td>
+         {% endfor %}
+        </tr>
+        
+        {% endfor %}
+       </table>
+      </center> 
+    </body>
+</html>
