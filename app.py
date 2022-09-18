@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session,Response
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import sqlite3
- 
+
+from export_excel import excel_file
+
 app = Flask(__name__)
  
  
@@ -54,9 +56,11 @@ def login():
             print(result)
             if result:
                 keys=list(result[0].keys())
-                print(keys)
-                msg = 'Logged in successfully !'
-                return render_template('qwe.html', msg = result,keys=keys)
+                output = excel_file(keys,result)
+                filename = 'otchet'
+                return Response(output, mimetype="application/ms-excel", headers={"Content-Disposition":f"attachment;filename={filename}.xls"})
+
+                # return render_template('qwe.html', msg = result,keys=keys)
 
                 
         if request.form.get('action3'):                                             #  3 кнопка
