@@ -2,6 +2,8 @@ import io
 import xlwt
 
 def excel_file(headers,data):
+    print("функция вошли")
+    print(headers,data)
      #output in bytes
     output = io.BytesIO()
     #create WorkBook object
@@ -24,5 +26,6 @@ def excel_file(headers,data):
         idx += 1
 
     workbook.save(output)
-    
-    return output.seek(0)
+    print("функция выщли")
+    output.seek(0)
+    return output

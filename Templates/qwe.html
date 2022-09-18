@@ -5,9 +5,16 @@
         <link rel="stylesheet" href="../static/style.css">      
     </head>
     <body>
-      <center>   
+      <center> 
+        <form method="POST" action="/export">
+        Ввод пользователя <input value={{data['user_name']}} type = "text" name= "fname" /> <br> 
+        <H1></H1> <br> 
+        Ввод проекта <input value={{data['project_name']}}  type = "text" name = "lname" /> <br>
+        <input type = "submit" value="Скачать" name="action5">
+        </form>
       <table border="1">
         <caption>Результат</caption>
+        
         <tr>
           {% for key in keys%}
          <th>{{key}}</th>
@@ -23,6 +30,7 @@
         
         {% endfor %}
        </table>
+
       </center> 
     </body>
 </html>
